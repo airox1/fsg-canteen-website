@@ -8,223 +8,8 @@
     content="About FSG Canteen — three cooking stations set up in a tight triangle so nothing travels far and nothing sits long." />
   <title>About — FSG Canteen</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    /* ── ABOUT PAGE ───────────────────────────────────────── */
-
-    .about-hero {
-      min-height: 70svh;
-      padding: 9rem 2.5rem 5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--smoke);
-    }
-
-    .about-hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .about-hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.25);
-    }
-
-    .about-hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, var(--black) 0%, transparent 60%);
-    }
-
-    .about-hero-content {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: end;
-    }
-
-    .about-hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(4rem, 9vw, 9rem);
-      line-height: 0.88;
-      color: var(--cream);
-    }
-
-    .about-hero-title em {
-      font-style: normal;
-      color: var(--amber);
-    }
-
-    .about-hero-text {
-      font-family: var(--font-body);
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: var(--ash);
-    }
-
-    .about-hero-text strong {
-      color: var(--cream);
-    }
-
-    /* The concept section */
-    .concept {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      border-bottom: 1px solid var(--smoke);
-    }
-
-    .concept-station {
-      padding: 4rem 2.5rem;
-      border-right: 1px solid var(--smoke);
-      position: relative;
-    }
-
-    .concept-station:last-child {
-      border-right: none;
-    }
-
-    .concept-num {
-      font-family: var(--font-display);
-      font-size: 6rem;
-      color: var(--smoke);
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-
-    .concept-name {
-      font-family: var(--font-display);
-      font-size: 2.8rem;
-      color: var(--cream);
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-
-    .concept-line {
-      width: 30px;
-      height: 2px;
-      background: var(--amber);
-      margin-bottom: 1.2rem;
-    }
-
-    .concept-desc {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      line-height: 1.75;
-      color: var(--ash);
-    }
-
-    /* Triangle explainer */
-    .triangle-section {
-      padding: 6rem 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-      border-bottom: 1px solid var(--smoke);
-      background: var(--charcoal);
-    }
-
-    .triangle-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .triangle-large {
-      width: min(320px, 80vw);
-      height: min(320px, 80vw);
-    }
-
-    .triangle-text h2 {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 5rem);
-      line-height: 0.9;
-      color: var(--cream);
-      margin-bottom: 1.5rem;
-    }
-
-    .triangle-text h2 em {
-      font-style: normal;
-      color: var(--amber);
-    }
-
-    .triangle-text p {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      line-height: 1.8;
-      color: var(--ash);
-      margin-bottom: 1rem;
-    }
-
-    .triangle-text p strong {
-      color: var(--cream);
-    }
-
-    /* Bottom CTA */
-    .about-cta {
-      padding: 6rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-
-    .about-cta h2 {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 6vw, 6rem);
-      line-height: 0.9;
-      color: var(--cream);
-    }
-
-    .about-cta h2 em {
-      font-style: normal;
-      color: var(--amber);
-    }
-
-
-
-    /* ── RESPONSIVE ──────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .about-hero-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .concept {
-        grid-template-columns: 1fr;
-      }
-
-      .concept-station {
-        border-right: none;
-        border-bottom: 1px solid var(--smoke);
-        padding: 2.5rem 1.4rem;
-      }
-
-      .triangle-section {
-        grid-template-columns: 1fr;
-        padding: 4rem 1.4rem;
-        gap: 3rem;
-      }
-
-      .about-hero {
-        padding: 8rem 1.4rem 4rem;
-      }
-
-      .about-cta {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 4rem 1.4rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/pages.css" />
+  
 </head>
 
 <body>
@@ -258,24 +43,24 @@
     </div>
   </section>
 
-  <!-- THE THREE STATIONS -->
+  <!-- split concepts -->
   <section class="concept">
     <div class="concept-station">
-      <div class="concept-num">F.</div>
+      <div class="concept-num" aria-hidden="true">F.</div>
       <div class="concept-name">Fried</div>
       <div class="concept-line"></div>
       <p class="concept-desc">The fryer runs hot and stays hot. Chicken. Pork. Onion rings. Fries. Everything that goes
         in comes out with a crust. That's what this station does and it's confident about it.</p>
     </div>
     <div class="concept-station">
-      <div class="concept-num">S.</div>
+      <div class="concept-num" aria-hidden="true">S.</div>
       <div class="concept-name">Steamed</div>
       <div class="concept-line"></div>
       <p class="concept-desc">The steamer is slower but it earns it. Gyoza with the skin still soft. Rolls with the
         right give. Rice that's actually cooked. Nothing super fancy, just done properly.</p>
     </div>
     <div class="concept-station">
-      <div class="concept-num">G.</div>
+      <div class="concept-num" aria-hidden="true">G.</div>
       <div class="concept-name">Grilled</div>
       <div class="concept-line"></div>
       <p class="concept-desc">Open flame. Nice char on beef. Sausage with the perfect flavor. Chicken that's been over
@@ -285,7 +70,7 @@
     </div>
   </section>
 
-  <!-- THE TRIANGLE -->
+  <!-- triangle diagram -->
   <section class="triangle-section">
     <div class="triangle-visual">
       <svg class="triangle-large" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -333,7 +118,7 @@
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- call to action -->
   <section class="about-cta">
     <h2>Now see<br>what we're<br><em>serving.</em></h2>
     <a href="menu.html" class="btn-menu">View The Menu &nbsp;→</a>
@@ -362,27 +147,7 @@
     </div>
   </footer>
 
-  <script>
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('expanded'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('expanded'));
-    });
-
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    const toggle = document.getElementById('navToggle');
-    const links = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => links.classList.toggle('open'));
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-  </script>
+  <script src="js/main.js"></script>
 
 </body>
 

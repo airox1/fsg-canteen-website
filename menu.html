@@ -8,250 +8,8 @@
     content="FSG Canteen menu — fried, steamed, and grilled dishes made to order from three cooking stations." />
   <title>Menu — FSG Canteen</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    /* ── MENU PAGE ────────────────────────────────────────── */
-
-    .menu-header {
-      padding: 9rem 2.5rem 4rem;
-      border-bottom: 1px solid var(--smoke);
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-
-    .menu-header h1 {
-      font-family: var(--font-display);
-      font-size: clamp(4rem, 10vw, 9rem);
-      line-height: 0.88;
-      color: var(--cream);
-    }
-
-    .menu-header h1 em {
-      font-style: normal;
-      color: var(--amber);
-    }
-
-    .menu-header-note {
-      font-family: var(--font-ui);
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ash);
-      max-width: 20ch;
-      line-height: 1.7;
-      text-align: right;
-    }
-
-    /* Station tabs */
-    .station-tabs {
-      display: flex;
-      border-bottom: 1px solid var(--smoke);
-      position: sticky;
-      top: 60px;
-      z-index: 50;
-      background: var(--black);
-    }
-
-    .tab-btn {
-      flex: 1;
-      padding: 1.2rem 1rem;
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 3vw, 2.2rem);
-      letter-spacing: 0.06em;
-      color: var(--ash);
-      background: none;
-      border: none;
-      border-bottom: 3px solid transparent;
-      cursor: none;
-      transition: color 0.25s, border-color 0.25s;
-      text-transform: uppercase;
-    }
-
-    .tab-btn:hover {
-      color: var(--cream);
-    }
-
-    .tab-btn.active {
-      color: var(--amber);
-      border-bottom-color: var(--amber);
-    }
-
-    /* Station panels */
-    .menu-panel {
-      display: none;
-      padding: 0 2.5rem 5rem;
-    }
-
-    .menu-panel.active {
-      display: block;
-    }
-
-    .panel-header {
-      padding: 4rem 0 2.5rem;
-      display: flex;
-      align-items: flex-end;
-      gap: 2rem;
-      border-bottom: 1px solid var(--smoke);
-      margin-bottom: 0;
-    }
-
-    .panel-number {
-      font-family: var(--font-display);
-      font-size: 8rem;
-      line-height: 1;
-      color: var(--smoke);
-    }
-
-    .panel-info h2 {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 6vw, 6rem);
-      line-height: 0.9;
-      color: var(--cream);
-    }
-
-    .panel-info p {
-      font-family: var(--font-ui);
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ash);
-      margin-top: 0.6rem;
-    }
-
-    /* Menu items */
-    .menu-items {
-      list-style: none;
-    }
-
-    .menu-item {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 1.5rem;
-      padding: 1.8rem 0;
-      border-bottom: 1px solid var(--smoke);
-      transition: background 0.2s;
-      position: relative;
-    }
-
-    .menu-item::before {
-      content: '';
-      position: absolute;
-      left: -2.5rem;
-      right: -2.5rem;
-      top: 0;
-      bottom: 0;
-      background: var(--charcoal);
-      opacity: 0;
-      transition: opacity 0.25s;
-      z-index: -1;
-    }
-
-    .menu-item:hover::before {
-      opacity: 1;
-    }
-
-    .item-icon {
-      width: 48px;
-      height: 48px;
-      border: 1px solid var(--smoke);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      transition: border-color 0.25s;
-    }
-
-    .menu-item:hover .item-icon {
-      border-color: var(--amber);
-    }
-
-
-
-    .item-name {
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      color: var(--cream);
-      letter-spacing: 0.03em;
-      line-height: 1;
-    }
-
-    .item-desc {
-      font-family: var(--font-body);
-      font-size: 0.88rem;
-      color: var(--ash);
-      margin-top: 0.35rem;
-      line-height: 1.5;
-    }
-
-    .item-price {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      color: var(--amber);
-      white-space: nowrap;
-      text-align: right;
-    }
-
-    /* Remove bottom border from menu items preceding a divider */
-    .menu-item:has(+ .section-divider) {
-      border-bottom: none;
-    }
-
-    /* Sides label */
-    .section-divider {
-      font-family: var(--font-ui);
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--amber);
-      padding: 2.5rem 0 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .section-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--smoke);
-    }
-
-    /* ── RESPONSIVE ──────────────────────────────────────── */
-    @media (max-width: 768px) {
-      .menu-header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 8rem 1.4rem 3rem;
-      }
-
-      .menu-header-note {
-        text-align: left;
-      }
-
-      .tab-btn {
-        font-size: 1.2rem;
-        padding: 1rem 0.5rem;
-      }
-
-      .menu-panel {
-        padding: 0 1.4rem 4rem;
-      }
-
-      .menu-item {
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto auto;
-      }
-
-      .item-price {
-        grid-column: 2;
-        text-align: left;
-        font-size: 1.2rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/pages.css" />
+  
 </head>
 
 <body>
@@ -270,13 +28,13 @@
     </ul>
   </nav>
 
-  <!-- HEADER -->
+  <!-- hd -->
   <header class="menu-header">
     <h1>The<br><em>Menu.</em></h1>
     <p class="menu-header-note">Three stations.<br>Everything made<br>to order.</p>
   </header>
 
-  <!-- TABS -->
+  <!-- tabs -->
   <div class="station-tabs">
     <button class="tab-btn active" data-tab="fried">Fried</button>
     <button class="tab-btn" data-tab="steamed">Steamed</button>
@@ -285,10 +43,10 @@
 
   <main>
 
-    <!-- ── FRIED ── -->
+    
     <div class="menu-panel active" id="fried">
       <div class="panel-header">
-        <span class="panel-number">F.</span>
+        <span class="panel-number" aria-hidden="true">F.</span>
         <div class="panel-info">
           <h2>Fried</h2>
           <p>High heat · Fast · Crisp</p>
@@ -296,7 +54,7 @@
       </div>
       <ul class="menu-items">
         <li class="menu-item">
-          <div class="item-icon">🍗</div>
+          <div class="item-icon" aria-hidden="true">🍗</div>
           <div class="item-body">
             <div class="item-name">Fried Chicken</div>
             <div class="item-desc">Bone-in or strips. Seasoned crust, juicy through.</div>
@@ -304,7 +62,7 @@
           <div class="item-price">$9</div>
         </li>
         <li class="menu-item">
-          <div class="item-icon">🥩</div>
+          <div class="item-icon" aria-hidden="true">🥩</div>
           <div class="item-body">
             <div class="item-name">Pork Belly Bites</div>
             <div class="item-desc">Crispy skin, rendered fat, served with dipping sauce.</div>
@@ -315,7 +73,7 @@
         <li class="section-divider">Sides</li>
 
         <li class="menu-item">
-          <div class="item-icon">🍟</div>
+          <div class="item-icon" aria-hidden="true">🍟</div>
           <div class="item-body">
             <div class="item-name">Fries</div>
             <div class="item-desc">Double-fried. Salted. No argument.</div>
@@ -323,7 +81,7 @@
           <div class="item-price">$4</div>
         </li>
         <li class="menu-item">
-          <div class="item-icon">🧅</div>
+          <div class="item-icon" aria-hidden="true">🧅</div>
           <div class="item-body">
             <div class="item-name">Onion Rings</div>
             <div class="item-desc">Thick-cut. Battered. Loud crunch.</div>
@@ -333,10 +91,10 @@
       </ul>
     </div>
 
-    <!-- ── STEAMED ── -->
+    
     <div class="menu-panel" id="steamed">
       <div class="panel-header">
-        <span class="panel-number">S.</span>
+        <span class="panel-number" aria-hidden="true">S.</span>
         <div class="panel-info">
           <h2>Steamed</h2>
           <p>Slow · Soft · Built right</p>
@@ -344,7 +102,7 @@
       </div>
       <ul class="menu-items">
         <li class="menu-item">
-          <div class="item-icon">🥟</div>
+          <div class="item-icon" aria-hidden="true">🥟</div>
           <div class="item-body">
             <div class="item-name">Gyoza</div>
             <div class="item-desc">Six pieces. Pork and cabbage. House dipping sauce.</div>
@@ -355,7 +113,7 @@
         <li class="section-divider">Sides</li>
 
         <li class="menu-item">
-          <div class="item-icon">🍚</div>
+          <div class="item-icon" aria-hidden="true">🍚</div>
           <div class="item-body">
             <div class="item-name">Steamed Rice</div>
             <div class="item-desc">Plain or seasoned. Works with everything.</div>
@@ -363,7 +121,7 @@
           <div class="item-price">$3</div>
         </li>
         <li class="menu-item">
-          <div class="item-icon">🥖</div>
+          <div class="item-icon" aria-hidden="true">🥖</div>
           <div class="item-body">
             <div class="item-name">Steamed Rolls</div>
             <div class="item-desc">Soft, pillowy. Two per order.</div>
@@ -373,10 +131,10 @@
       </ul>
     </div>
 
-    <!-- ── GRILLED ── -->
+    
     <div class="menu-panel" id="grilled">
       <div class="panel-header">
-        <span class="panel-number">G.</span>
+        <span class="panel-number" aria-hidden="true">G.</span>
         <div class="panel-info">
           <h2>Grilled</h2>
           <p>Open flame · Char · Done</p>
@@ -384,7 +142,7 @@
       </div>
       <ul class="menu-items">
         <li class="menu-item">
-          <div class="item-icon">🥩</div>
+          <div class="item-icon" aria-hidden="true">🥩</div>
           <div class="item-body">
             <div class="item-name">Beef</div>
             <div class="item-desc">Skewers or cuts. Char on the outside, done how you want it.</div>
@@ -392,7 +150,7 @@
           <div class="item-price">$12</div>
         </li>
         <li class="menu-item">
-          <div class="item-icon">🍗</div>
+          <div class="item-icon" aria-hidden="true">🍗</div>
           <div class="item-body">
             <div class="item-name">Grilled Chicken</div>
             <div class="item-desc">Marinated. Grilled hard. Served fast.</div>
@@ -400,7 +158,7 @@
           <div class="item-price">$10</div>
         </li>
         <li class="menu-item">
-          <div class="item-icon">🌭</div>
+          <div class="item-icon" aria-hidden="true">🌭</div>
           <div class="item-body">
             <div class="item-name">Grilled Sausage</div>
             <div class="item-desc">Snapped casing, smoky inside. On its own or in a roll.</div>
@@ -408,7 +166,7 @@
           <div class="item-price">$8</div>
         </li>
         <li class="menu-item">
-          <div class="item-icon">🧀</div>
+          <div class="item-icon" aria-hidden="true">🧀</div>
           <div class="item-body">
             <div class="item-name">Ham + Cheese Sandwich</div>
             <div class="item-desc">Pressed on the grill. Crisp bread, melted through.</div>
@@ -419,7 +177,7 @@
         <li class="section-divider">Sides</li>
 
         <li class="menu-item">
-          <div class="item-icon">🌽</div>
+          <div class="item-icon" aria-hidden="true">🌽</div>
           <div class="item-body">
             <div class="item-name">Corn on the Cob</div>
             <div class="item-desc">Grilled in the husk. Butter and salt.</div>
@@ -454,52 +212,7 @@
     </div>
   </footer>
 
-  <script>
-    // Cursor
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('expanded'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('expanded'));
-    });
-
-    // Nav
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    // Mobile nav
-    const toggle = document.getElementById('navToggle');
-    const links = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => links.classList.toggle('open'));
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-
-    // Tab switching + URL hash
-    const tabs = document.querySelectorAll('.tab-btn');
-    const panels = document.querySelectorAll('.menu-panel');
-
-    function activateTab(id) {
-      tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === id));
-      panels.forEach(p => p.classList.toggle('active', p.id === id));
-    }
-
-    tabs.forEach(btn => {
-      btn.addEventListener('click', () => {
-        activateTab(btn.dataset.tab);
-        history.replaceState(null, '', '#' + btn.dataset.tab);
-      });
-    });
-
-    // Activate from URL hash on load
-    const hash = location.hash.replace('#', '');
-    if (hash && ['fried', 'steamed', 'grilled'].includes(hash)) {
-      activateTab(hash);
-    }
-  </script>
+  <script src="js/main.js"></script>
 
 </body>
 
